@@ -1,6 +1,8 @@
 import React from "react";
 import requests from "@/utils/requests";
 import { Movie } from "@/typings";
+import Head from "next/head";
+import { Header, Banner, Row } from "@/components";
 
 interface Props {
  netflixOriginals: Movie[];
@@ -25,18 +27,28 @@ const Home = ({
  romanceMovies,
  documentaries,
 }: Props) => {
- console.log(netflixOriginals);
- console.log(trendingNow);
- console.log(topRated);
- console.log(upcoming);
- console.log(actionMovies);
- console.log(comedyMovies);
- console.log(horrorMovies);
- console.log(romanceMovies);
- console.log(documentaries);
  return (
-  <div>
-   <h1 className="text-3xl font-bold underline">Hello world!</h1>
+  <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
+   <Head>
+    <title>Home - Netflix</title>
+    <link rel="icon" href="/favicon.ico" />
+   </Head>
+
+   <Header />
+   <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
+    <Banner netflixOriginals={netflixOriginals} />
+    <section className="">
+     <Row title="Trending now" movies={trendingNow} />
+     <Row title="Top Rated" movies={topRated} />
+     <Row title="Action thriller" movies={actionMovies} />
+     {/* My List Row */}
+     <Row title="Comedy Movies" movies={comedyMovies} />
+     <Row title="Horror Movies" movies={horrorMovies} />
+     <Row title="Documentaries" movies={documentaries} />
+     <Row title="Upcoming movies" movies={upcoming} />
+    </section>
+   </main>
+   {/* Modal */}
   </div>
  );
 };
@@ -91,7 +103,7 @@ export async function getServerSideProps() {
  // Pass data to the page via props
  return {
   props: {
-   netflixOriginals,
+   netflixOriginals: netflixOriginals.results,
    trendingNow,
    topRated,
    upcoming,

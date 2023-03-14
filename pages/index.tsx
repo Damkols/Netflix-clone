@@ -104,14 +104,14 @@ export async function getServerSideProps() {
  return {
   props: {
    netflixOriginals: netflixOriginals.results,
-   trendingNow,
-   topRated,
-   upcoming,
-   actionMovies,
-   comedyMovies,
-   horrorMovies,
-   romanceMovies,
-   documentaries,
+   trendingNow: trendingNow.results,
+   topRated: topRated.results,
+   upcoming: upcoming.results,
+   actionMovies: actionMovies.results,
+   comedyMovies: comedyMovies.results,
+   horrorMovies: horrorMovies.results,
+   romanceMovies: romanceMovies.results,
+   documentaries: documentaries.results,
   },
  };
 }

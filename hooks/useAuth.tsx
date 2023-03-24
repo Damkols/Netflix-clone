@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
  const memoedValue = useMemo(
   () => ({ user, signUp, signIn, error, logout, loading }),
-  [user, loading]
+  [user, loading, error]
  );
 
  return (
